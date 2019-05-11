@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WiFiADB</string>
+    <string name="sw_enable_text">开启</string>
+    <string name="tv_ip_text">IP地址</string>
+</resources>
