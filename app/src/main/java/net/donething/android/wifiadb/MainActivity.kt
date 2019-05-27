@@ -37,6 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        initView()
+    }
+
+    /**
+     * 初始化视图
+     */
+    private fun initView() {
         // WiFi adb开启状态
         var cmds = arrayOf("netstat -ntulp |grep $ADB_PORT")
         var result = ShellUtils.execCommand(cmds, true, true)
