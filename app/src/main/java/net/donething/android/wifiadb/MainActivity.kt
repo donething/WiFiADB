@@ -52,7 +52,8 @@ class MainActivity : AppCompatActivity() {
         )
         swEnable.isChecked = result.result == 0 && result.successMsg.contains(ADB_PORT.toString())
 
-        // 远程连接地址
+
+        // 展示远程连接地址
         // 获取IP地址参考：https://blog.csdn.net/Tim_phper/article/details/53334029
         var ips = ""    // 获取eth0和wlan0的两种IP
         // eth0
@@ -60,16 +61,17 @@ class MainActivity : AppCompatActivity() {
         result = ShellUtils.execCommand(cmds, true, true)
         // Log.d(TAG, "地址：${result.result}, ${result.successMsg}, ${result.errorMsg}")
         if (result.result == 0 && result.successMsg.isNotBlank()) {
-            ips += "${result.successMsg}:$ADB_PORT\n"
+            ips += "eth0 ${result.successMsg}:$ADB_PORT\n"
         }
 
         // wlan0
         cmds = arrayOf("ifconfig wlan0 |grep 'inet '| awk '{print \$2}'")
         result = ShellUtils.execCommand(cmds, true, true)
         if (result.result == 0 && result.successMsg.isNotBlank()) {
-            ips += "${result.successMsg}:$ADB_PORT"
+            ips += "wlan0 ${result.successMsg}:$ADB_PORT"
         }
 
+        // 显示
         tvIP.text = ips
     }
 }
