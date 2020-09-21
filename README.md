@@ -1,2 +1,2 @@
 # WiFiADB
-开关WiFi adb
+Android 端开关 WiFi adb 的工具
